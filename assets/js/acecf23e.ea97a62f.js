@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcpp_docs=self.webpackChunkcpp_docs||[]).push([["3220"],{1912(s){s.exports=JSON.parse('{"blogBasePath":"/cpp-notes/blog","blogTitle":"Blog","authorsListPath":"/cpp-notes/blog/authors"}')}}]);

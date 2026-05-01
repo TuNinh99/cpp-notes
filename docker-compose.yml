@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  docusaurus:
+    build: .
+    container_name: cpp-notes-docs
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/app/src
+      - ./docs:/app/docs
+      - ./blog:/app/blog
+      - ./docusaurus.config.js:/app/docusaurus.config.js
+      - ./package.json:/app/package.json
+      - ./sidebars.js:/app/sidebars.js
+      - /app/node_modules
+    stdin_open: true
+    tty: true

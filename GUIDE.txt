@@ -1,0 +1,8 @@
+when the source was changed. Perform 2 steps:
+step 1: update the source on the github
+git add .
+git commit -m "update docs"
+git push
+
+step 2: deploy to update the website
+npm run deploy

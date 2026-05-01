@@ -6,3 +6,5 @@ git push
 
 step 2: deploy to update the website
 npm run deploy
+
+Note: deploy.sh is a script including the 2 steps above

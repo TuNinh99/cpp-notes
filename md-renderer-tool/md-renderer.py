@@ -1,6 +1,7 @@
 import os
 import re
 import json
+import shutil
 import pandas as pd
 from slugify import slugify
 
@@ -347,6 +348,11 @@ def process_sheet(
 # ==========================================
 
 def main():
+
+    # remove old docs
+    if os.path.exists(OUTPUT_DIR):
+        shutil.rmtree(OUTPUT_DIR)
+
     os.makedirs(
         OUTPUT_DIR,
         exist_ok=True
@@ -370,7 +376,6 @@ def main():
         )
 
     print("\n✅ Done.")
-
 
 if __name__ == "__main__":
     main()

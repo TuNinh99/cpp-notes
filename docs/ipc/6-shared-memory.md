@@ -6,13 +6,14 @@ title: "Shared memory"
 
 ## 🧾 Content
 
+```cpp
 I. Shared memory là cơ chế nhanh nhất trong IPC cho phép nhiều process cùng truy cập 1 vùng nhớ chung, nằm trong kernel quản lý. các process đọc - ghi trực tiếp cùng 1 vùng.
 
 II. các hoạt động chính:
 - 1 process tạo shared memory (shmget())
-- kernel cấp phát vùng shared memory
-- process khác attach vào
-- tất cả cùng đọc/ghi vùng đó
+- Kernel cấp phát vùng shared memory
+- Process khác attach vào
+- Tất cả cùng đọc/ghi vùng đó
 
 III. Lưu ý:
 - Shared memory không tự đồng bộ, phải tự đồng bộ qua semaphore hoặc mutex
@@ -20,8 +21,8 @@ III. Lưu ý:
 - Lifetime: tồn tại trong kernel, không phụ thuộc 100% vào process, chỉ mất khi shctl(IPC_RMID)/reboot
 
 *Notes: 
-- attach = kết nối vào vùng nhớ chung
-- detach = ngắt kết nối
+- Attach = kết nối vào vùng nhớ chung
+- Detach = ngắt kết nối
 
 IV. Phân loại
 1. Phân loại theo Giao thức Hệ điều hành (OS IPC)
@@ -36,6 +37,7 @@ IV. Phân loại
 - Single Buffer: Chỉ có 1 vùng nhớ, phải dùng Mutex/Semaphore để khóa (chậm vì bên này chờ bên kia).
 - Double Buffer: Dùng 2 vùng nhớ để vừa ghi vào vùng này, vừa đọc từ vùng kia (tối ưu tốc độ).
 - Ring Buffer (Circular Buffer): Vùng nhớ cuốn chiếu, phù hợp cho dữ liệu dạng luồng (Streaming) liên tục.
+```
 
 ## 📝 Note
 

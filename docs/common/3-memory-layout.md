@@ -1,5 +1,6 @@
 ---
-title: "Memory layout"
+title: "3. Memory layout"
+sidebar_position: 3
 ---
 
 # 3. Memory layout

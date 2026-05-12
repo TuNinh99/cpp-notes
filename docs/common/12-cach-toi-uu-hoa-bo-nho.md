@@ -1,5 +1,6 @@
 ---
-title: "Cách tối ưu hoá bộ nhớ"
+title: "12. Cách tối ưu hoá bộ nhớ"
+sidebar_position: 12
 ---
 
 # 12. Cách tối ưu hoá bộ nhớ

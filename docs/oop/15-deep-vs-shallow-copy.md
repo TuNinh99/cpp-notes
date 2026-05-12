@@ -1,5 +1,6 @@
 ---
-title: "Deep vs Shallow copy"
+title: "15. Deep vs Shallow copy"
+sidebar_position: 15
 ---
 
 # 15. Deep vs Shallow copy

@@ -1,5 +1,6 @@
 ---
-title: "Message Queue"
+title: "5. Message Queue"
+sidebar_position: 5
 ---
 
 # 5. Message Queue

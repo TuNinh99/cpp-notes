@@ -1,0 +1,26 @@
+---
+title: "7. Virtual là gì? hoạt động thế nào? vtable là gì?"
+sidebar_position: 7
+---
+
+# 7. Virtual là gì? hoạt động thế nào? vtable là gì?
+
+## 🧾 Content
+
+1. Virtual là gì?
+virtual dùng để bật cơ chế dynamic dispatch (late binding), cho phép chúng gọi hàm của object thực tế (runtime type) thay vì kiểu con trỏ/reference (compile-time type)
+
+2. Vtable là gì?
+là 1 bảng các con trỏ hàm được compiler tạo ra cho mỗi class có virtual function
+
+3. Hoạt động thế nào? - quá trình dynamic dispatch
+obj -&gt; vptr -&gt; vtable -&gt; function
+
+4. Chi phí (overhead)
+- Memory overhead: mỗi object có thêm 1 vptr (thường là 8bytes)
+- Runtime overhead: thêm 1 lần tìm kiếm thông qua vtable
+- Cache miss (có thể): ko inline được dễ dàng
+
+## 📝 Note
+
+Hay hỏi sâu memory layout

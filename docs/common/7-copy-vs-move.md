@@ -1,5 +1,6 @@
 ---
-title: "Copy vs Move"
+title: "7. Copy vs Move"
+sidebar_position: 7
 ---
 
 # 7. Copy vs Move

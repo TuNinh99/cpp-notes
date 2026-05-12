@@ -1,5 +1,6 @@
 ---
-title: "Socket"
+title: "8. Socket"
+sidebar_position: 8
 ---
 
 # 8. Socket

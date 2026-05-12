@@ -1,0 +1,16 @@
+---
+title: "10. Rule of 3/5/0 là gì? destructor có cần virtual không?"
+sidebar_position: 10
+---
+
+# 10. Rule of 3/5/0 là gì? destructor có cần virtual không?
+
+## 🧾 Content
+
+Rule of 3: copy ctor, copy assign, destructor.
+Rule of 5: + move ctor, move assign.
+Destructor cần virtual nếu dùng polymorphism để tránh memory leak
+
+## 📝 Note
+
+Rất hay hỏi ở senior

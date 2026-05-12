@@ -1,14 +1,15 @@
 import os
 import re
+import json
 import pandas as pd
 from slugify import slugify
 
 INPUT_FILE = "cpp-docs.xlsx"
 OUTPUT_DIR = "../docs"
 
-# =========================
+# ==========================================
 # TEXT HELPERS
-# =========================
+# ==========================================
 
 def clean_text(value) -> str:
     if pd.isna(value):
@@ -16,7 +17,6 @@ def clean_text(value) -> str:
 
     text = str(value)
 
-    # normalize newline
     text = text.replace("\r\n", "\n")
     text = text.replace("\r", "\n")
 
@@ -24,43 +24,54 @@ def clean_text(value) -> str:
 
 
 def capitalize_first(text: str) -> str:
-    """
-    Viết hoa chữ cái đầu tiên.
-    """
     if not text:
         return ""
 
     return text[0].upper() + text[1:]
 
 
+def title_case(text: str) -> str:
+    if not text:
+        return ""
+
+    words = text.replace("-", " ").split()
+
+    return " ".join(word.capitalize() for word in words)
+
+
 def capitalize_bullet_items(text: str) -> str:
     """
-    Viết hoa chữ cái đầu của:
+    Viết hoa chữ cái đầu:
     - bullet list
     - numbered list
     """
 
     lines = text.split("\n")
+
     result = []
 
     for line in lines:
         stripped = line.strip()
 
-        # bullet list
         bullet_match = re.match(r"^([-*])\s+(.*)", stripped)
 
-        # numbered list
         numbered_match = re.match(r"^(\d+\.)\s+(.*)", stripped)
 
         if bullet_match:
             prefix = bullet_match.group(1)
-            content = capitalize_first(bullet_match.group(2))
+
+            content = capitalize_first(
+                bullet_match.group(2)
+            )
 
             result.append(f"{prefix} {content}")
 
         elif numbered_match:
             prefix = numbered_match.group(1)
-            content = capitalize_first(numbered_match.group(2))
+
+            content = capitalize_first(
+                numbered_match.group(2)
+            )
 
             result.append(f"{prefix} {content}")
 
@@ -70,9 +81,9 @@ def capitalize_bullet_items(text: str) -> str:
     return "\n".join(result)
 
 
-# =========================
+# ==========================================
 # MDX SANITIZE
-# =========================
+# ==========================================
 
 def escape_html(text: str) -> str:
     return (
@@ -83,9 +94,6 @@ def escape_html(text: str) -> str:
 
 
 def escape_mdx(text: str) -> str:
-    """
-    Escape các ký tự gây lỗi MDX
-    """
     if not text:
         return ""
 
@@ -99,9 +107,9 @@ def escape_mdx(text: str) -> str:
     return text
 
 
-# =========================
+# ==========================================
 # CONTENT FORMAT
-# =========================
+# ==========================================
 
 CPP_KEYWORDS = [
     "std::",
@@ -127,14 +135,16 @@ def wrap_code_block(text: str) -> str:
     return text
 
 
-def format_headings(text: str) -> str:
-    """
-    Convert:
-    Ưu điểm
-    Nhược điểm
-    => markdown heading
-    """
+def normalize_bullets(text: str) -> str:
+    bullet_chars = ["•", "●", "▪", "◦"]
 
+    for bullet in bullet_chars:
+        text = text.replace(bullet, "-")
+
+    return text
+
+
+def format_headings(text: str) -> str:
     replacements = {
         "Ưu điểm": "### ✅ Ưu điểm",
         "Nhược điểm": "### ❌ Nhược điểm",
@@ -143,20 +153,12 @@ def format_headings(text: str) -> str:
     }
 
     for old, new in replacements.items():
-        text = re.sub(rf"^{old}$", new, text, flags=re.MULTILINE)
-
-    return text
-
-
-def normalize_bullets(text: str) -> str:
-    """
-    Convert bullet unicode sang markdown
-    """
-
-    bullet_chars = ["•", "●", "▪", "◦"]
-
-    for bullet in bullet_chars:
-        text = text.replace(bullet, "-")
+        text = re.sub(
+            rf"^{old}$",
+            new,
+            text,
+            flags=re.MULTILINE
+        )
 
     return text
 
@@ -175,28 +177,64 @@ def format_content(text: str) -> str:
 
     text = wrap_code_block(text)
 
-    # remove excessive blank lines
     text = re.sub(r"\n{3,}", "\n\n", text)
 
     return text.strip()
 
 
-# =========================
-# MARKDOWN GENERATION
-# =========================
+# ==========================================
+# CATEGORY
+# ==========================================
 
-def generate_markdown(no, title, content, note):
-    title = capitalize_first(title)
+def create_category_file(
+    folder_path,
+    sheet_index,
+    sheet_name
+):
+    category_data = {
+        "label": f"{sheet_index}. {title_case(sheet_name)}",
+        "position": sheet_index,
+        "collapsed": False
+    }
 
+    category_path = os.path.join(
+        folder_path,
+        "_category_.json"
+    )
+
+    with open(
+        category_path,
+        "w",
+        encoding="utf-8"
+    ) as f:
+        json.dump(
+            category_data,
+            f,
+            indent=2,
+            ensure_ascii=False
+        )
+
+
+# ==========================================
+# MARKDOWN
+# ==========================================
+
+def generate_markdown(
+    title,
+    content,
+    note,
+    sidebar_position
+):
     content = format_content(content)
 
     note = format_content(note)
 
     return f"""---
 title: "{title}"
+sidebar_position: {sidebar_position}
 ---
 
-# {no}. {title}
+# {title}
 
 ## 🧾 Content
 
@@ -208,67 +246,128 @@ title: "{title}"
 """
 
 
-# =========================
+# ==========================================
 # FILE GENERATION
-# =========================
+# ==========================================
 
-def generate_file(folder_path, no, title, markdown_content):
-    filename = f"{no}-{slugify(title)}.md"
+def generate_file(
+    folder_path,
+    item_index,
+    raw_title,
+    markdown_content
+):
+    filename = (
+        f"{item_index}-"
+        f"{slugify(raw_title)}.md"
+    )
 
-    filepath = os.path.join(folder_path, filename)
+    filepath = os.path.join(
+        folder_path,
+        filename
+    )
 
-    with open(filepath, "w", encoding="utf-8") as f:
+    with open(
+        filepath,
+        "w",
+        encoding="utf-8"
+    ) as f:
         f.write(markdown_content)
 
     print(f"✔ Generated: {filepath}")
 
 
-def process_sheet(xls, sheet_name):
+# ==========================================
+# PROCESS SHEET
+# ==========================================
+
+def process_sheet(
+    xls,
+    sheet_name,
+    sheet_index
+):
     df = xls.parse(sheet_name)
 
     folder_name = slugify(sheet_name)
 
-    folder_path = os.path.join(OUTPUT_DIR, folder_name)
+    folder_path = os.path.join(
+        OUTPUT_DIR,
+        folder_name
+    )
 
     os.makedirs(folder_path, exist_ok=True)
 
-    for _, row in df.iterrows():
-        no = clean_text(row.get("No."))
-        title = clean_text(row.get("Title"))
-        content = clean_text(row.get("Content"))
-        note = clean_text(row.get("Note"))
+    # create _category_.json
+    create_category_file(
+        folder_path,
+        sheet_index,
+        sheet_name
+    )
 
-        if not no or not title:
+    for item_index, (_, row) in enumerate(
+        df.iterrows(),
+        start=1
+    ):
+        raw_title = clean_text(
+            row.get("Title")
+        )
+
+        content = clean_text(
+            row.get("Content")
+        )
+
+        note = clean_text(
+            row.get("Note")
+        )
+
+        if not raw_title:
             continue
 
+        display_title = (
+            f"{item_index}. "
+            f"{capitalize_first(raw_title)}"
+        )
+
         markdown_content = generate_markdown(
-            no,
-            title,
-            content,
-            note,
+            title=display_title,
+            content=content,
+            note=note,
+            sidebar_position=item_index
         )
 
         generate_file(
             folder_path,
-            no,
-            title,
-            markdown_content,
+            item_index,
+            raw_title,
+            markdown_content
         )
 
 
-# =========================
+# ==========================================
 # MAIN
-# =========================
+# ==========================================
 
 def main():
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    os.makedirs(
+        OUTPUT_DIR,
+        exist_ok=True
+    )
 
     xls = pd.ExcelFile(INPUT_FILE)
 
-    for sheet_name in xls.sheet_names:
-        print(f"\n📘 Processing sheet: {sheet_name}")
+    for sheet_index, sheet_name in enumerate(
+        xls.sheet_names,
+        start=1
+    ):
+        print(
+            f"\n📘 Processing sheet: "
+            f"{sheet_name}"
+        )
 
-        process_sheet(xls, sheet_name)
+        process_sheet(
+            xls,
+            sheet_name,
+            sheet_index
+        )
 
     print("\n✅ Done.")
 

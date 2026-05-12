@@ -1,5 +1,6 @@
 ---
-title: "Smart pointer"
+title: "9. Smart pointer"
+sidebar_position: 9
 ---
 
 # 9. Smart pointer

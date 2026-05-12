@@ -1,5 +1,6 @@
 ---
-title: "Return by value, return by reference, return by pointer"
+title: "2. Return by value, return by reference, return by pointer"
+sidebar_position: 2
 ---
 
 # 2. Return by value, return by reference, return by pointer

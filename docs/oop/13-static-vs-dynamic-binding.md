@@ -1,5 +1,6 @@
 ---
-title: "Static vs Dynamic binding"
+title: "13. Static vs Dynamic binding"
+sidebar_position: 13
 ---
 
 # 13. Static vs Dynamic binding
@@ -7,8 +8,8 @@ title: "Static vs Dynamic binding"
 ## 🧾 Content
 
 binding là quá trình kết nối một lời gọi hàm với thân hàm
-- static binding (early binding): xác định hàm → lưu địa chỉ hàm vào bộ nhớ → thay thế lời gọi hàm (binding) → đóng gói (executable)
-- dynamic binding (late binding): obj → vptr → vtable → function (giống dynamic dispatch)
+- Static binding (early binding): xác định hàm → lưu địa chỉ hàm vào bộ nhớ → thay thế lời gọi hàm (binding) → đóng gói (executable)
+- Dynamic binding (late binding): obj → vptr → vtable → function (giống dynamic dispatch)
 
 ## 📝 Note
 

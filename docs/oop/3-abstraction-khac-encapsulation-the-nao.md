@@ -1,5 +1,6 @@
 ---
-title: "Abstraction khác encapsulation thế nào?"
+title: "3. Abstraction khác encapsulation thế nào?"
+sidebar_position: 3
 ---
 
 # 3. Abstraction khác encapsulation thế nào?

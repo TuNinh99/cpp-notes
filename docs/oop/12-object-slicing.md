@@ -1,5 +1,6 @@
 ---
-title: "Object slicing"
+title: "12. Object slicing"
+sidebar_position: 12
 ---
 
 # 12. Object slicing
@@ -9,12 +10,12 @@ title: "Object slicing"
 xảy ra khi gán object derived cho obj base theo kiểu pass-by-value → 
 
 hậu quả
-- mất phần derived.
-- mất tính đa hình
+- Mất phần derived.
+- Mất tính đa hình
 
 solution
-- dùng con trỏ: Base *p = &derivedObj;
-- dùng tham chiếu: Base &r = derivedObj;
+- Dùng con trỏ: Base *p = &amp;derivedObj;
+- Dùng tham chiếu: Base &amp;r = derivedObj;
 
 ## 📝 Note
 

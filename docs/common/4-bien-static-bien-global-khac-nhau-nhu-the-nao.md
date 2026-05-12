@@ -1,5 +1,6 @@
 ---
-title: "Biến static & biến global khác nhau như thế nào?"
+title: "4. Biến static & biến global khác nhau như thế nào?"
+sidebar_position: 4
 ---
 
 # 4. Biến static & biến global khác nhau như thế nào?

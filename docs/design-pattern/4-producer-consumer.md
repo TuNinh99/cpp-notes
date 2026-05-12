@@ -1,5 +1,6 @@
 ---
-title: "Producer – Consumer"
+title: "4. Producer – Consumer"
+sidebar_position: 4
 ---
 
 # 4. Producer – Consumer

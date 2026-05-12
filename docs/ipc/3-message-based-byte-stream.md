@@ -1,5 +1,6 @@
 ---
-title: "Message-based & Byte-stream"
+title: "3. Message-based & Byte-stream"
+sidebar_position: 3
 ---
 
 # 3. Message-based & Byte-stream

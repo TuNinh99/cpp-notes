@@ -1,5 +1,6 @@
 ---
-title: "Double buffer & shared memory"
+title: "10. Double buffer & shared memory"
+sidebar_position: 10
 ---
 
 # 10. Double buffer & shared memory

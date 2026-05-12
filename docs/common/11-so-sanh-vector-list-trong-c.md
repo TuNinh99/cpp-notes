@@ -1,5 +1,6 @@
 ---
-title: "So sánh vector & list trong C++"
+title: "11. So sánh vector & list trong C++"
+sidebar_position: 11
 ---
 
 # 11. So sánh vector & list trong C++

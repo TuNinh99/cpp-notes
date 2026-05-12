@@ -1,5 +1,6 @@
 ---
-title: "Quá trình build 1 chương trình C/C++ diễn ra như thế nào?"
+title: "5. Quá trình build 1 chương trình C/C++ diễn ra như thế nào?"
+sidebar_position: 5
 ---
 
 # 5. Quá trình build 1 chương trình C/C++ diễn ra như thế nào?

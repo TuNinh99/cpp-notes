@@ -1,5 +1,6 @@
 ---
-title: "So sánh map & hash trong C++"
+title: "10. So sánh map & hash trong C++"
+sidebar_position: 10
 ---
 
 # 10. So sánh map & hash trong C++

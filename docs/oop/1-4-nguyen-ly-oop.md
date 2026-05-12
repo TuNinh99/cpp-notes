@@ -1,5 +1,6 @@
 ---
-title: "4 nguyên lý OOP"
+title: "1. 4 nguyên lý OOP"
+sidebar_position: 1
 ---
 
 # 1. 4 nguyên lý OOP

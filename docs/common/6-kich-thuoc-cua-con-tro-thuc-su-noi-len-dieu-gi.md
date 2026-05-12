@@ -1,5 +1,6 @@
 ---
-title: "Kích thước của con trỏ thực sự nói lên điều gì?"
+title: "6. Kích thước của con trỏ thực sự nói lên điều gì?"
+sidebar_position: 6
 ---
 
 # 6. Kích thước của con trỏ thực sự nói lên điều gì?

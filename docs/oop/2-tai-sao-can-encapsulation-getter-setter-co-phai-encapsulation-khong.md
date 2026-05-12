@@ -1,5 +1,6 @@
 ---
-title: "Tại sao cần encapsulation? Getter/setter có phải encapsulation không?"
+title: "2. Tại sao cần encapsulation? Getter/setter có phải encapsulation không?"
+sidebar_position: 2
 ---
 
 # 2. Tại sao cần encapsulation? Getter/setter có phải encapsulation không?
@@ -11,7 +12,7 @@ title: "Tại sao cần encapsulation? Getter/setter có phải encapsulation kh
 - Encapsulation = kiểm soát truy cập + invariant của object.
 Note: 
 - Invariant = những điều kiện LUÔN đúng của object trong suốt vòng đời của nó
-- ex: width, height phải luôn &gt; 0
+- Ex: width, height phải luôn &gt; 0
 
 ## 📝 Note
 

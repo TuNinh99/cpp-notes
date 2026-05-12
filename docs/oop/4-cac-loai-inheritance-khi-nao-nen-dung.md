@@ -1,22 +1,23 @@
 ---
-title: "Các loại inheritance? Khi nào nên dùng?"
+title: "4. Các loại inheritance? Khi nào nên dùng?"
+sidebar_position: 4
 ---
 
 # 4. Các loại inheritance? Khi nào nên dùng?
 
 ## 🧾 Content
 
-1. public inheritance
-- class con có thể dùng thay thế class cha
-- cần đa hình 
-- dùng khi muốn expose API của base ra ngoài và cho phép dùng qua con trỏ base
+1. Public inheritance
+- Class con có thể dùng thay thế class cha
+- Cần đa hình
+- Dùng khi muốn expose API của base ra ngoài và cho phép dùng qua con trỏ base
 
-2. protected inheritrance
-- khi chỉ muốn class con dùng base, còn bên ngoài không được đụng
+2. Protected inheritrance
+- Khi chỉ muốn class con dùng base, còn bên ngoài không được đụng
 
-3. private inheritance
-- muốn tái sử dụng implementation, nhưng không muốn lộ ra ngoài
-- không cần đa hình
+3. Private inheritance
+- Muốn tái sử dụng implementation, nhưng không muốn lộ ra ngoài
+- Không cần đa hình
 
 ## 📝 Note
 

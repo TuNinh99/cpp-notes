@@ -1,5 +1,6 @@
 ---
-title: "Pass by value, pass by reference, pass by pointer"
+title: "1. Pass by value, pass by reference, pass by pointer"
+sidebar_position: 1
 ---
 
 # 1. Pass by value, pass by reference, pass by pointer

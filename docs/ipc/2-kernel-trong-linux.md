@@ -1,5 +1,6 @@
 ---
-title: "Kernel trong Linux"
+title: "2. Kernel trong Linux"
+sidebar_position: 2
 ---
 
 # 2. Kernel trong Linux

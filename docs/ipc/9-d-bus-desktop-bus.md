@@ -1,5 +1,6 @@
 ---
-title: "D-Bus (Desktop bus)"
+title: "9. D-Bus (Desktop bus)"
+sidebar_position: 9
 ---
 
 # 9. D-Bus (Desktop bus)

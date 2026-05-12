@@ -1,5 +1,6 @@
 ---
-title: "1. IPC thực sự là gì?"
+title: "1. 1. IPC thực sự là gì?"
+sidebar_position: 1
 ---
 
 # 1. 1. IPC thực sự là gì?

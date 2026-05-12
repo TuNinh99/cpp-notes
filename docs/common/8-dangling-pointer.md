@@ -1,5 +1,6 @@
 ---
-title: "Dangling pointer"
+title: "8. Dangling pointer"
+sidebar_position: 8
 ---
 
 # 8. Dangling pointer

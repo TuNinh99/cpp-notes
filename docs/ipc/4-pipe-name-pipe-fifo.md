@@ -1,5 +1,6 @@
 ---
-title: "Pipe & Name Pipe (FIFO)"
+title: "4. Pipe & Name Pipe (FIFO)"
+sidebar_position: 4
 ---
 
 # 4. Pipe & Name Pipe (FIFO)

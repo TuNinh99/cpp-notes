@@ -1,5 +1,6 @@
 ---
-title: "SOLID principles"
+title: "13. SOLID principles"
+sidebar_position: 13
 ---
 
 # 13. SOLID principles

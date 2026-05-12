@@ -1,5 +1,6 @@
 ---
-title: "Shared memory"
+title: "6. Shared memory"
+sidebar_position: 6
 ---
 
 # 6. Shared memory
